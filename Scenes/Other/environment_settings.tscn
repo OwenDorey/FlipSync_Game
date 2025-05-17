@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxitwchryqnw5"]
+
+[sub_resource type="Environment" id="Environment_muj12"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 0
+
+[node name="EnvironmentSettings" type="WorldEnvironment"]
+environment = SubResource("Environment_muj12")

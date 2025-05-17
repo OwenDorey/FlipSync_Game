@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjkb7qbhq7le4"]
+
+[ext_resource type="Script" path="res://Scripts/spike_zone.gd" id="1_adeor"]
+
+[node name="SpikeZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_adeor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

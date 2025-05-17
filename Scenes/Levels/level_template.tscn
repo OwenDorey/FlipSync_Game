@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmybh8qjhnsee"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_f6eub"]
+[ext_resource type="PackedScene" uid="uid://vgkhcf2ckty0" path="res://Scenes/LevelTemplate/game_tiles.tscn" id="2_gidv7"]
+[ext_resource type="PackedScene" uid="uid://bwc8yl2xh456l" path="res://Scenes/LevelTemplate/red_door.tscn" id="3_eqt3h"]
+[ext_resource type="PackedScene" uid="uid://cxtpak2q7r65b" path="res://Scenes/LevelTemplate/blue_door.tscn" id="4_xb6bo"]
+[ext_resource type="PackedScene" uid="uid://cdib48umloxbd" path="res://Scenes/LevelTemplate/blue_char.tscn" id="5_fu4mo"]
+[ext_resource type="PackedScene" uid="uid://cwrfv7ugv60gv" path="res://Scenes/LevelTemplate/red_char.tscn" id="6_7suiy"]
+[ext_resource type="PackedScene" uid="uid://3ifqhnmxx6wi" path="res://Scenes/Other/scene_transition_animation.tscn" id="7_sxwvc"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_f6eub")
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_gidv7")]
+
+[node name="RedDoor" parent="." instance=ExtResource("3_eqt3h")]
+position = Vector2(-80, 2)
+
+[node name="BlueDoor" parent="." instance=ExtResource("4_xb6bo")]
+position = Vector2(80, 2)
+
+[node name="BlueChar" parent="." instance=ExtResource("5_fu4mo")]
+position = Vector2(32, 0)
+
+[node name="RedChar" parent="." instance=ExtResource("6_7suiy")]
+position = Vector2(-32, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("7_sxwvc")]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6xsdiynidkux"]
+
+[ext_resource type="Script" path="res://Scripts/pickup.gd" id="1_28fh3"]
+[ext_resource type="Texture2D" uid="uid://vng7iqlkv4yx" path="res://Assets/Level/DirectionPickup.png" id="2_kwkjd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crale"]
+atlas = ExtResource("2_kwkjd")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfrll"]
+atlas = ExtResource("2_kwkjd")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xnrs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crale")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfrll")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rmf2"]
+radius = 7.0
+
+[sub_resource type="Curve" id="Curve_1yicl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gnert"]
+curve = SubResource("Curve_1yicl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2vqpe"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 12.0
+gravity = Vector3(-12, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_gnert")
+
+[sub_resource type="Curve" id="Curve_w2dml"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vtdbh"]
+curve = SubResource("Curve_w2dml")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0bjea"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 12.0
+gravity = Vector3(12, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_vtdbh")
+
+[node name="DirectionPickup" type="Area2D"]
+modulate = Color(1.2, 1.2, 1.2, 1)
+collision_mask = 2
+script = ExtResource("1_28fh3")
+pickup_type = "Direction"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1xnrs")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6rmf2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_2vqpe")
+lifetime = 2.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_0bjea")
+lifetime = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

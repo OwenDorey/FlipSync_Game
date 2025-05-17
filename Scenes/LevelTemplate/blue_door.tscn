@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxtpak2q7r65b"]
+
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_1iy3y"]
+[ext_resource type="Texture2D" uid="uid://dh4ey6ejxuxek" path="res://Assets/Level/Door.png" id="1_cn451"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e5no"]
+size = Vector2(36, 48)
+
+[node name="BlueDoor" type="Area2D"]
+z_index = -1
+collision_mask = 2
+script = ExtResource("1_1iy3y")
+colour = "Blue"
+group_name = "Blue"
+off_colour = Color(0, 0.191667, 0.5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4e5no")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.659, 1.36, 1)
+texture = ExtResource("1_cn451")

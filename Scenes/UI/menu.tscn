@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dddb4p2y57551"]
+[gd_scene load_steps=3 format=3 uid="uid://dddb4p2y57551"]
 
-[ext_resource type="Texture2D" uid="uid://dqpv8ah4ngs13" path="res://Assets/UI/Logo.png" id="1_bdy7n"]
+[ext_resource type="FontFile" uid="uid://jgt86xiqwyvb" path="res://Assets/UI/Spac3 halftone.ttf" id="1_8jiqc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ml01b"]
+font = ExtResource("1_8jiqc")
+font_size = 185
+shadow_size = 5
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -19,20 +24,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0313726, 0.0313726, 0.0313726, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -787.0
-offset_top = -246.72
-offset_right = 787.0
-offset_bottom = 559.28
+offset_left = -635.0
+offset_right = 635.0
+offset_bottom = 275.0
 grow_horizontal = 2
-texture = ExtResource("1_bdy7n")
-expand_mode = 2
+text = "FLIPSYNC"
+label_settings = SubResource("LabelSettings_ml01b")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -39.5
+offset_right = 172.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_8jiqc")
+theme_override_font_sizes/font_size = 58
+text = "PLAY"

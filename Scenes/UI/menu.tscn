@@ -1,11 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dddb4p2y57551"]
+[gd_scene load_steps=9 format=3 uid="uid://dddb4p2y57551"]
 
 [ext_resource type="FontFile" uid="uid://jgt86xiqwyvb" path="res://Assets/UI/Spac3 halftone.ttf" id="1_8jiqc"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_aujwq"]
+[ext_resource type="Shader" path="res://Assets/Chromatic_Abberation.gdshader" id="2_2qw48"]
+[ext_resource type="PackedScene" uid="uid://3ifqhnmxx6wi" path="res://Scenes/Other/scene_transition_animation.tscn" id="4_7vp3j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ml01b"]
 font = ExtResource("1_8jiqc")
 font_size = 185
 shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di3bq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Environment" id="Environment_qe6hn"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 3.7
+glow_bloom = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0000r"]
+shader = ExtResource("2_2qw48")
+shader_parameter/aberration = 0.5
+shader_parameter/strength = 0.074
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -14,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_aujwq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -30,27 +49,74 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -635.0
+offset_top = 20.0
 offset_right = 635.0
-offset_bottom = 275.0
+offset_bottom = 295.0
 grow_horizontal = 2
 text = "FLIPSYNC"
 label_settings = SubResource("LabelSettings_ml01b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonList" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -172.0
-offset_top = -39.5
-offset_right = 172.0
-offset_bottom = 39.5
+offset_left = -284.0
+offset_top = -15.02
+offset_right = 284.0
+offset_bottom = 211.98
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="ButtonList"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.12549, 0.305882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.658824, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_8jiqc")
 theme_override_font_sizes/font_size = 58
+theme_override_styles/focus = SubResource("StyleBoxFlat_di3bq")
 text = "PLAY"
+flat = true
+
+[node name="LevelSelectButton" type="Button" parent="ButtonList"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.12549, 0.305882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.658824, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_8jiqc")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/focus = SubResource("StyleBoxFlat_di3bq")
+text = "LEVEL SELECT"
+flat = true
+
+[node name="QuitButton" type="Button" parent="ButtonList"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.12549, 0.305882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.658824, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_8jiqc")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/focus = SubResource("StyleBoxFlat_di3bq")
+text = "QUIT"
+flat = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qe6hn")
+
+[node name="ChromaticAbberation" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0000r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_7vp3j")]
+
+[connection signal="button_down" from="ButtonList/PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="button_down" from="ButtonList/QuitButton" to="." method="_on_quit_button_button_down"]

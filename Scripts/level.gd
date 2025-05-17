@@ -10,6 +10,7 @@ var levels = [
 
 var one_door : bool
 var has_finished : bool = false
+var has_died : bool = false
 
 const MAX_DOOR_TIME : float = 0.5
 
@@ -65,8 +66,10 @@ func load_next_level():
 
 # On player death
 func character_died():	
-	await get_tree().create_timer(0.7).timeout
-	reload_level()
+	if has_died == false:
+		has_died = true
+		await get_tree().create_timer(0.7).timeout
+		reload_level()
 		
 # On level complete
 func finish_level():

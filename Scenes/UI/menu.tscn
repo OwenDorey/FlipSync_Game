@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dddb4p2y57551"]
+[gd_scene load_steps=15 format=3 uid="uid://dddb4p2y57551"]
 
 [ext_resource type="FontFile" uid="uid://jgt86xiqwyvb" path="res://Assets/UI/Spac3 halftone.ttf" id="1_8jiqc"]
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_aujwq"]
 [ext_resource type="Shader" path="res://Assets/Chromatic_Abberation.gdshader" id="2_2qw48"]
 [ext_resource type="PackedScene" uid="uid://3ifqhnmxx6wi" path="res://Scenes/Other/scene_transition_animation.tscn" id="4_7vp3j"]
+[ext_resource type="PackedScene" uid="uid://dggk60mc8rrvr" path="res://Scenes/Other/death_particles.tscn" id="5_cp38s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ml01b"]
 font = ExtResource("1_8jiqc")
@@ -17,13 +18,42 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 background_mode = 3
 glow_enabled = true
 glow_normalized = true
-glow_intensity = 3.7
-glow_bloom = 0.6
+glow_intensity = 8.0
+glow_strength = 0.67
+glow_blend_mode = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0000r"]
 shader = ExtResource("2_2qw48")
 shader_parameter/aberration = 0.5
 shader_parameter/strength = 0.074
+
+[sub_resource type="Gradient" id="Gradient_or8nk"]
+offsets = PackedFloat32Array(0.532787, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_161lf"]
+gradient = SubResource("Gradient_or8nk")
+
+[sub_resource type="Curve" id="Curve_4m61b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bdu6e"]
+curve = SubResource("Curve_4m61b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s8oc0"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(704, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 36.05
+initial_velocity_max = 297.53
+scale_min = 10.0
+scale_max = 35.0
+scale_curve = SubResource("CurveTexture_bdu6e")
+color_ramp = SubResource("GradientTexture1D_161lf")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -44,6 +74,7 @@ grow_vertical = 2
 color = Color(0.0313726, 0.0313726, 0.0313726, 1)
 
 [node name="Title" type="Label" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -59,6 +90,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ButtonList" type="VBoxContainer" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,6 +139,7 @@ flat = true
 environment = SubResource("Environment_qe6hn")
 
 [node name="ChromaticAbberation" type="ColorRect" parent="."]
+z_index = 1
 material = SubResource("ShaderMaterial_0000r")
 layout_mode = 1
 anchors_preset = 15
@@ -117,6 +150,25 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_7vp3j")]
+
+[node name="FallingParticlesRed" parent="." instance=ExtResource("5_cp38s")]
+position = Vector2(704, -26.84)
+emitting = true
+amount = 75
+process_material = SubResource("ParticleProcessMaterial_s8oc0")
+lifetime = 8.0
+one_shot = false
+explosiveness = 0.0
+
+[node name="FallingParticlesBlue" parent="." instance=ExtResource("5_cp38s")]
+self_modulate = Color(0, 0.659, 1.75, 1)
+position = Vector2(704, -26.84)
+emitting = true
+amount = 75
+process_material = SubResource("ParticleProcessMaterial_s8oc0")
+lifetime = 8.0
+one_shot = false
+explosiveness = 0.0
 
 [connection signal="button_down" from="ButtonList/PlayButton" to="." method="_on_play_button_button_down"]
 [connection signal="button_down" from="ButtonList/QuitButton" to="." method="_on_quit_button_button_down"]

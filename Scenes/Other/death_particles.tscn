@@ -1,28 +1,27 @@
 [gd_scene load_steps=6 format=3 uid="uid://dggk60mc8rrvr"]
 
-[sub_resource type="Gradient" id="Gradient_or8nk"]
+[sub_resource type="Gradient" id="Gradient_thbik"]
 offsets = PackedFloat32Array(0.532787, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_6c08j"]
-gradient = SubResource("Gradient_or8nk")
+gradient = SubResource("Gradient_thbik")
 
-[sub_resource type="Curve" id="Curve_4m61b"]
+[sub_resource type="Curve" id="Curve_2sbkt"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_ck3k2"]
-curve = SubResource("Curve_4m61b")
+curve = SubResource("Curve_2sbkt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o6nly"]
 lifetime_randomness = 0.5
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 150.0
-initial_velocity_max = 250.0
+initial_velocity_max = 158.63
 gravity = Vector3(0, 0, 0)
 scale_min = 5.0
-scale_max = 5.0
+scale_max = 7.0
 scale_curve = SubResource("CurveTexture_ck3k2")
 color_ramp = SubResource("GradientTexture1D_6c08j")
 

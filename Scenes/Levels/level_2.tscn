@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c0pcfpktpfd1h"]
+[gd_scene load_steps=18 format=4 uid="uid://c0pcfpktpfd1h"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_q3pdu"]
 [ext_resource type="PackedScene" uid="uid://vgkhcf2ckty0" path="res://Scenes/LevelTemplate/game_tiles.tscn" id="2_5ek67"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3ifqhnmxx6wi" path="res://Scenes/Other/scene_transition_animation.tscn" id="5_q2ce6"]
 [ext_resource type="PackedScene" uid="uid://d1h02ugxd3k7m" path="res://Scenes/Pickups/gravity_pickup.tscn" id="6_ns44v"]
 [ext_resource type="PackedScene" uid="uid://cjkb7qbhq7le4" path="res://Scenes/Other/spike_zone.tscn" id="7_ear8s"]
+[ext_resource type="PackedScene" uid="uid://dggk60mc8rrvr" path="res://Scenes/Other/death_particles.tscn" id="8_53hs3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlohu"]
 size = Vector2(64, 7.5)
@@ -19,6 +20,34 @@ size = Vector2(48, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4p3a"]
 size = Vector2(45, 7)
+
+[sub_resource type="Gradient" id="Gradient_thbik"]
+offsets = PackedFloat32Array(0.532787, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6c08j"]
+gradient = SubResource("Gradient_thbik")
+
+[sub_resource type="Curve" id="Curve_2sbkt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ck3k2"]
+curve = SubResource("Curve_2sbkt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ekro2"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(704, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 21.96
+initial_velocity_max = 297.53
+scale_min = 45.0
+scale_max = 45.0
+scale_curve = SubResource("CurveTexture_ck3k2")
+color_ramp = SubResource("GradientTexture1D_6c08j")
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_q3pdu")
@@ -69,6 +98,15 @@ position = Vector2(0.5, 0)
 [node name="CollisionShape2D" parent="SpikeZone4" index="0"]
 position = Vector2(-151, -73.5)
 shape = SubResource("RectangleShape2D_u4p3a")
+
+[node name="FallingParticles" parent="." instance=ExtResource("8_53hs3")]
+position = Vector2(704, -26.84)
+emitting = true
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_ekro2")
+lifetime = 8.0
+one_shot = false
+explosiveness = 0.0
 
 [editable path="SpikeZone"]
 [editable path="SpikeZone2"]

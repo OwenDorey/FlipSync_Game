@@ -5,7 +5,8 @@ const ENVIRONMENT_SETTINGS = preload("res://Scenes/Other/environment_settings.ts
 var levels = [
 	load("res://Scenes/Levels/level_1.tscn"),
 	load("res://Scenes/Levels/level_2.tscn"),
-	load("res://Scenes/Levels/level_3.tscn")
+	load("res://Scenes/Levels/level_3.tscn"),
+	load("res://Scenes/Levels/level_4.tscn")
 ]
 
 var one_door : bool

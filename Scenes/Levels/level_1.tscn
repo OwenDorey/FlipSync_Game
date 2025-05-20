@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://niimx5rj58tu"]
+[gd_scene load_steps=11 format=4 uid="uid://niimx5rj58tu"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tlwwe"]
 [ext_resource type="PackedScene" uid="uid://vgkhcf2ckty0" path="res://Scenes/LevelTemplate/game_tiles.tscn" id="2_xhdqg"]
@@ -7,9 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://dhjv7si4whkrj" path="res://Assets/UI/Controls.png" id="6_7tqxf"]
 [ext_resource type="PackedScene" uid="uid://cwrfv7ugv60gv" path="res://Scenes/LevelTemplate/red_char.tscn" id="6_cy8wj"]
 [ext_resource type="PackedScene" uid="uid://cjkb7qbhq7le4" path="res://Scenes/Other/spike_zone.tscn" id="7_xrqpe"]
+[ext_resource type="FontFile" uid="uid://bo0df6mxdlkhd" path="res://Assets/UI/pixelmix.ttf" id="8_4704b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iv3n8"]
 size = Vector2(45, 7)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k3pww"]
+font = ExtResource("8_4704b")
+font_size = 18
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_tlwwe")
@@ -39,5 +44,20 @@ position = Vector2(-83, 83)
 [node name="CollisionShape2D" parent="SpikeZone" index="0"]
 position = Vector2(12.5, 6.5)
 shape = SubResource("RectangleShape2D_iv3n8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -382.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = 141.0
+grow_horizontal = 0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_k3pww")
+horizontal_alignment = 2
 
 [editable path="SpikeZone"]

@@ -43,7 +43,7 @@ off_colour = Color(0.5, 0.035, 0.0892501, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4e5no")
 
-[node name="FallingParticlesRed" parent="." instance=ExtResource("2_t5sbg")]
+[node name="DoorParticles" parent="." instance=ExtResource("2_t5sbg")]
 emitting = true
 amount = 35
 process_material = SubResource("ParticleProcessMaterial_s0mjh")

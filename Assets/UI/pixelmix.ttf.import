@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cql0n44wlbngt"
-path="res://.godot/imported/Magnetar.otf-fada4409d4611f7fc08fa46d495a67f3.fontdata"
+uid="uid://bo0df6mxdlkhd"
+path="res://.godot/imported/pixelmix.ttf-31b29587fb55fbce2e1554afc9c37e36.fontdata"
 
 [deps]
 
-source_file="res://Assets/UI/Magnetar.otf"
-dest_files=["res://.godot/imported/Magnetar.otf-fada4409d4611f7fc08fa46d495a67f3.fontdata"]
+source_file="res://Assets/UI/pixelmix.ttf"
+dest_files=["res://.godot/imported/pixelmix.ttf-31b29587fb55fbce2e1554afc9c37e36.fontdata"]
 
 [params]
 

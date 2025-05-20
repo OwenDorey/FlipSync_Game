@@ -43,7 +43,7 @@ off_colour = Color(0, 0.191667, 0.5, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4e5no")
 
-[node name="FallingParticlesRed" parent="." instance=ExtResource("2_t3kcs")]
+[node name="DoorParticles" parent="." instance=ExtResource("2_t3kcs")]
 self_modulate = Color(0, 0.659, 1.75, 1)
 emitting = true
 amount = 35

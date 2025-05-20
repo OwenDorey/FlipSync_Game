@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://jgt86xiqwyvb"
-path="res://.godot/imported/Spac3 halftone.ttf-494ec772a371381e09078ad60516cfeb.fontdata"
+uid="uid://ycj87031i47v"
+path="res://.godot/imported/Retro Gaming.ttf-8148f449fa36c7a49c447874109d4e91.fontdata"
 
 [deps]
 
-source_file="res://Assets/UI/Spac3 halftone.ttf"
-dest_files=["res://.godot/imported/Spac3 halftone.ttf-494ec772a371381e09078ad60516cfeb.fontdata"]
+source_file="res://Assets/UI/Retro Gaming.ttf"
+dest_files=["res://.godot/imported/Retro Gaming.ttf-8148f449fa36c7a49c447874109d4e91.fontdata"]
 
 [params]
 
@@ -28,13 +28,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0),
-"variation_embolden": 0.0
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

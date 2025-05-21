@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmybh8qjhnsee"]
+[gd_scene load_steps=9 format=3 uid="uid://bmybh8qjhnsee"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_f6eub"]
 [ext_resource type="PackedScene" uid="uid://vgkhcf2ckty0" path="res://Scenes/LevelTemplate/game_tiles.tscn" id="2_gidv7"]
 [ext_resource type="PackedScene" uid="uid://bwc8yl2xh456l" path="res://Scenes/LevelTemplate/red_door.tscn" id="3_eqt3h"]
+[ext_resource type="TileSet" uid="uid://bbqh8vr1yddvb" path="res://Assets/Tiles/TileSet.tres" id="3_itjhm"]
 [ext_resource type="PackedScene" uid="uid://cxtpak2q7r65b" path="res://Scenes/LevelTemplate/blue_door.tscn" id="4_xb6bo"]
 [ext_resource type="PackedScene" uid="uid://cdib48umloxbd" path="res://Scenes/LevelTemplate/blue_char.tscn" id="5_fu4mo"]
 [ext_resource type="PackedScene" uid="uid://cwrfv7ugv60gv" path="res://Scenes/LevelTemplate/red_char.tscn" id="6_7suiy"]
@@ -12,6 +13,7 @@
 script = ExtResource("1_f6eub")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("2_gidv7")]
+tile_set = ExtResource("3_itjhm")
 
 [node name="RedDoor" parent="." instance=ExtResource("3_eqt3h")]
 position = Vector2(-80, 2)

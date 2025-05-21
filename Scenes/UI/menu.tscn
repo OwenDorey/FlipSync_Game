@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3ifqhnmxx6wi" path="res://Scenes/Other/scene_transition_animation.tscn" id="4_7vp3j"]
 [ext_resource type="PackedScene" uid="uid://dggk60mc8rrvr" path="res://Scenes/Other/death_particles.tscn" id="5_cp38s"]
 [ext_resource type="PackedScene" uid="uid://vgkhcf2ckty0" path="res://Scenes/LevelTemplate/game_tiles.tscn" id="6_7dvxr"]
-[ext_resource type="Texture2D" uid="uid://bpg308nqgyuvy" path="res://Assets/TestTiles.png" id="7_w6f8m"]
+[ext_resource type="Texture2D" uid="uid://bpg308nqgyuvy" path="res://Assets/Tiles/TestTiles.png" id="7_w6f8m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ml01b"]
 font = ExtResource("1_8jiqc")

@@ -44,3 +44,15 @@ position = Vector2(17, 85)
 [node name="Spike7" parent="." instance=ExtResource("7_m26d5")]
 position = Vector2(-150, -69)
 rotation = 3.14159
+
+[node name="Spike8" parent="." instance=ExtResource("7_m26d5")]
+position = Vector2(-41, -85)
+rotation = -3.14159
+
+[node name="Spike9" parent="." instance=ExtResource("7_m26d5")]
+position = Vector2(0, -85)
+rotation = -3.14159
+
+[node name="Spike10" parent="." instance=ExtResource("7_m26d5")]
+position = Vector2(41, -85)
+rotation = -3.14159

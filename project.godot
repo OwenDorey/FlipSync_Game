@@ -57,5 +57,5 @@ skip_level={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(5.2643e-08, 0, 0.0951902, 1)
+environment/defaults/default_clear_color=Color(0.780748, 0.854324, 1, 1)
 viewport/hdr_2d=true

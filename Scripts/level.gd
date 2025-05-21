@@ -6,7 +6,8 @@ var levels = [
 	load("res://Scenes/Levels/level_1.tscn"),
 	load("res://Scenes/Levels/level_2.tscn"),
 	load("res://Scenes/Levels/level_3.tscn"),
-	load("res://Scenes/Levels/level_4.tscn")
+	load("res://Scenes/Levels/level_4.tscn"),
+	load("res://Scenes/Levels/level_5.tscn")
 ]
 
 var one_door : bool

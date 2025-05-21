@@ -10,7 +10,7 @@ func load_scene(scene_name : String):
 	get_tree().change_scene_to_file(scene_name)
 	
 func _on_play_button_button_down() -> void:
-	load_scene("res://Scenes/Levels/level_5.tscn")
+	load_scene("res://Scenes/Levels/level_1.tscn")
 
 func _on_quit_button_button_down() -> void:
 	scene_transition_animation.play("fade_in")

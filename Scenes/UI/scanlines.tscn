@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://jw6ldqdg73fp"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/screen_effect.gdshader" id="1_ip4s3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a37cl"]
+shader = ExtResource("1_ip4s3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_aiu3a"]
+size = Vector2(1408, 768)
+center_offset = Vector3(703, 384, 0)
+
+[node name="Scanlines" type="MeshInstance2D"]
+z_index = 2
+material = SubResource("ShaderMaterial_a37cl")
+mesh = SubResource("QuadMesh_aiu3a")

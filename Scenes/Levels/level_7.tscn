@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d1h02ugxd3k7m" path="res://Scenes/Pickups/gravity_pickup.tscn" id="10_wh3o3"]
 [ext_resource type="PackedScene" uid="uid://cd2s2gwmgxdmd" path="res://Scenes/Pickups/freeze_pickup.tscn" id="11_cm7p3"]
 
-[node name="Level4" type="Node2D"]
+[node name="Level7" type="Node2D"]
 script = ExtResource("1_nrq52")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_h0v1u")]

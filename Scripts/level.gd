@@ -9,7 +9,8 @@ var levels = [
 	load("res://Scenes/Levels/level_4.tscn"),
 	load("res://Scenes/Levels/level_5.tscn"),
 	load("res://Scenes/Levels/level_6.tscn"),
-	load("res://Scenes/Levels/level_7.tscn")
+	load("res://Scenes/Levels/level_7.tscn"),
+	load("res://Scenes/Levels/level_8.tscn")
 ]
 
 var one_door : bool
@@ -72,7 +73,7 @@ func load_next_level():
 	if current_level != -1 and current_level + 1 < levels.size():
 		get_tree().change_scene_to_packed(levels[current_level + 1])
 	else:
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://Scenes/UI/menu.tscn")
 		
 # Open menu
 func load_menu():

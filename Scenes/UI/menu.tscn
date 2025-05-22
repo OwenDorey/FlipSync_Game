@@ -1,11 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://dddb4p2y57551"]
+[gd_scene load_steps=29 format=3 uid="uid://dddb4p2y57551"]
 
 [ext_resource type="FontFile" uid="uid://jgt86xiqwyvb" path="res://Assets/UI/Spac3 halftone.ttf" id="1_8jiqc"]
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_aujwq"]
-[ext_resource type="Texture2D" uid="uid://dh4ey6ejxuxek" path="res://Assets/Level/Door.png" id="3_7kyfo"]
+[ext_resource type="Texture2D" uid="uid://ce6dv855dqy71" path="res://Assets/LevelSelect/1.png" id="3_8ok3f"]
 [ext_resource type="Shader" path="res://Assets/Shaders/chromatic_abberation.gdshader" id="3_bsl5f"]
+[ext_resource type="FontFile" uid="uid://bo0df6mxdlkhd" path="res://Assets/UI/pixelmix.ttf" id="3_joaft"]
 [ext_resource type="PackedScene" uid="uid://3ifqhnmxx6wi" path="res://Scenes/Other/scene_transition_animation.tscn" id="4_7vp3j"]
+[ext_resource type="Texture2D" uid="uid://dmdw0pasrvwrr" path="res://Assets/LevelSelect/2.png" id="4_x71xi"]
+[ext_resource type="Texture2D" uid="uid://dhogauy6s2p8b" path="res://Assets/LevelSelect/3.png" id="5_aabkj"]
 [ext_resource type="PackedScene" uid="uid://dggk60mc8rrvr" path="res://Scenes/Other/death_particles.tscn" id="5_cp38s"]
+[ext_resource type="Texture2D" uid="uid://devshepxjbji" path="res://Assets/LevelSelect/4.png" id="6_ita03"]
+[ext_resource type="Texture2D" uid="uid://btbh1wjo6hcs4" path="res://Assets/LevelSelect/5.png" id="8_aqpjy"]
+[ext_resource type="Texture2D" uid="uid://c4g4pjb8t1wsj" path="res://Assets/LevelSelect/6.png" id="9_fru7d"]
+[ext_resource type="Texture2D" uid="uid://y2rq1juag5v0" path="res://Assets/LevelSelect/7.png" id="10_uenm5"]
+[ext_resource type="Texture2D" uid="uid://dwtr0d7i7y5xc" path="res://Assets/LevelSelect/8.png" id="11_wevcn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ml01b"]
 font = ExtResource("1_8jiqc")
@@ -92,7 +100,7 @@ tracks/0/path = NodePath("Main:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(2, 0.5),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-1408, 0)]
@@ -110,10 +118,38 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(-1408, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_y0kuj"]
+resource_name = "open_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(-1408, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Levels:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(-1408, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_506gr"]
 _data = {
 "RESET": SubResource("Animation_biihq"),
-"open_level_select": SubResource("Animation_d4vx5")
+"open_level_select": SubResource("Animation_d4vx5"),
+"open_menu": SubResource("Animation_y0kuj")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0000r"]
@@ -231,80 +267,131 @@ label_settings = SubResource("LabelSettings_8iyvb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Levels"]
+[node name="LevelButtons" type="GridContainer" parent="Levels"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1292.5
-offset_top = -58.0
-offset_right = 1523.5
-offset_bottom = 58.0
+offset_left = 916.0
+offset_top = -142.0
+offset_right = 1900.0
+offset_bottom = 142.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 5
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 4
 
-[node name="Button" type="Button" parent="Levels/GridContainer"]
+[node name="Button1" type="Button" parent="Levels/LevelButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+theme_override_constants/icon_max_width = 235
+theme_override_fonts/font = ExtResource("3_joaft")
+theme_override_font_sizes/font_size = 29
+text = "I"
+icon = ExtResource("3_8ok3f")
+icon_alignment = 1
 
-[node name="Button2" type="Button" parent="Levels/GridContainer"]
+[node name="Button2" type="Button" parent="Levels/LevelButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+theme_override_constants/icon_max_width = 235
+theme_override_fonts/font = ExtResource("3_joaft")
+theme_override_font_sizes/font_size = 29
+text = "II"
+icon = ExtResource("4_x71xi")
+icon_alignment = 1
 
-[node name="Button3" type="Button" parent="Levels/GridContainer"]
+[node name="Button3" type="Button" parent="Levels/LevelButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+theme_override_constants/icon_max_width = 235
+theme_override_fonts/font = ExtResource("3_joaft")
+theme_override_font_sizes/font_size = 29
+text = "III"
+icon = ExtResource("5_aabkj")
+icon_alignment = 1
 
-[node name="Button4" type="Button" parent="Levels/GridContainer"]
+[node name="Button4" type="Button" parent="Levels/LevelButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+theme_override_constants/icon_max_width = 235
+theme_override_fonts/font = ExtResource("3_joaft")
+theme_override_font_sizes/font_size = 29
+text = "IV"
+icon = ExtResource("6_ita03")
+icon_alignment = 1
 
-[node name="Button5" type="Button" parent="Levels/GridContainer"]
+[node name="Button5" type="Button" parent="Levels/LevelButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+theme_override_constants/icon_max_width = 235
+theme_override_fonts/font = ExtResource("3_joaft")
+theme_override_font_sizes/font_size = 29
+text = "V"
+icon = ExtResource("8_aqpjy")
+icon_alignment = 1
 
-[node name="Button6" type="Button" parent="Levels/GridContainer"]
+[node name="Button6" type="Button" parent="Levels/LevelButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+theme_override_constants/icon_max_width = 235
+theme_override_fonts/font = ExtResource("3_joaft")
+theme_override_font_sizes/font_size = 29
+text = "VI"
+icon = ExtResource("9_fru7d")
+icon_alignment = 1
 
-[node name="Button7" type="Button" parent="Levels/GridContainer"]
+[node name="Button7" type="Button" parent="Levels/LevelButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+theme_override_constants/icon_max_width = 235
+theme_override_fonts/font = ExtResource("3_joaft")
+theme_override_font_sizes/font_size = 29
+text = "VII"
+icon = ExtResource("10_uenm5")
+icon_alignment = 1
 
-[node name="Button8" type="Button" parent="Levels/GridContainer"]
+[node name="Button8" type="Button" parent="Levels/LevelButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+theme_override_constants/icon_max_width = 235
+theme_override_fonts/font = ExtResource("3_joaft")
+theme_override_font_sizes/font_size = 29
+text = "VIII"
+icon = ExtResource("11_wevcn")
+icon_alignment = 1
 
-[node name="Button9" type="Button" parent="Levels/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
-
-[node name="Button10" type="Button" parent="Levels/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-icon = ExtResource("3_7kyfo")
+[node name="BackButton" type="Button" parent="Levels"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1305.0
+offset_top = 645.0
+offset_right = 1511.0
+offset_bottom = 714.0
+grow_horizontal = 2
+pivot_offset = Vector2(103, 0)
+theme_override_colors/font_hover_color = Color(1, 0.0313726, 0.054902, 1)
+theme_override_colors/font_pressed_color = Color(0.027451, 0.666667, 1, 1)
+theme_override_fonts/font = ExtResource("1_8jiqc")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/focus = SubResource("StyleBoxFlat_di3bq")
+text = "BACK"
+flat = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qe6hn")
@@ -349,3 +436,4 @@ mouse_filter = 2
 [connection signal="button_down" from="Main/ButtonList/PlayButton" to="." method="_on_play_button_button_down"]
 [connection signal="button_down" from="Main/ButtonList/LevelSelectButton" to="." method="_on_level_select_button_button_down"]
 [connection signal="button_down" from="Main/ButtonList/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="button_down" from="Levels/BackButton" to="." method="_on_back_button_button_down"]

@@ -1,24 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6xsdiynidkux"]
+[gd_scene load_steps=13 format=3 uid="uid://cd2s2gwmgxdmd"]
 
-[ext_resource type="Script" path="res://Scripts/pickup.gd" id="1_28fh3"]
-[ext_resource type="Texture2D" uid="uid://vng7iqlkv4yx" path="res://Assets/Level/DirectionPickup.png" id="2_kwkjd"]
+[ext_resource type="Script" path="res://Scripts/pickup.gd" id="1_s627o"]
+[ext_resource type="Texture2D" uid="uid://cc4mpj3keysms" path="res://Assets/Level/FreezePickup.png" id="2_mvge4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_crale"]
-atlas = ExtResource("2_kwkjd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6tse"]
+atlas = ExtResource("2_mvge4")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfrll"]
-atlas = ExtResource("2_kwkjd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsbaq"]
+atlas = ExtResource("2_mvge4")
 region = Rect2(0, 24, 24, 24)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1xnrs"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0kyce"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_crale")
+"texture": SubResource("AtlasTexture_w6tse")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gfrll")
+"texture": SubResource("AtlasTexture_tsbaq")
 }],
 "loop": true,
 "name": &"default",
@@ -35,11 +35,11 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_gnert"]
 curve = SubResource("Curve_1yicl")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2vqpe"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8q3jd"]
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 12.0
-gravity = Vector3(-12, 0, 0)
+gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_gnert")
 
@@ -50,38 +50,38 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_vtdbh"]
 curve = SubResource("Curve_w2dml")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0bjea"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wuvyk"]
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 12.0
-gravity = Vector3(12, 0, 0)
+gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_vtdbh")
 
-[node name="DirectionPickup" type="Area2D"]
+[node name="FreezePickup" type="Area2D"]
 modulate = Color(1.2, 1.2, 1.2, 1)
 collision_mask = 2
-script = ExtResource("1_28fh3")
-pickup_type = "Direction"
+script = ExtResource("1_s627o")
+pickup_type = "Freeze"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_1xnrs")
+sprite_frames = SubResource("SpriteFrames_0kyce")
 autoplay = "default"
+frame_progress = 0.5888
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_6rmf2")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-modulate = Color(1, 0.898039, 0, 1)
+modulate = Color(0.545098, 0.945098, 1, 1)
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_2vqpe")
+process_material = SubResource("ParticleProcessMaterial_8q3jd")
 lifetime = 2.0
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
-modulate = Color(1, 0.898039, 0, 1)
+modulate = Color(0.545098, 0.945098, 1, 1)
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_0bjea")
+process_material = SubResource("ParticleProcessMaterial_wuvyk")
 lifetime = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

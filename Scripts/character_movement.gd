@@ -5,6 +5,7 @@ const SPEED : float = 120.0
 const JUMP_VELOCITY : float = -270.0
 @export_enum("Down:1", "Up:-1") var gravity_direction : int = 1
 @export_enum("Normal:1", "Inverse:-1") var walk_direction : int = 1
+var is_frozen : bool = false
 
 @export var particle_colour : Color
 const DEATH_PARTICLES = preload("res://Scenes/Other/death_particles.tscn")
@@ -24,13 +25,19 @@ func flip_gravity() -> void:
 	
 func flip_direction() -> void:
 	walk_direction *= -1
+	
+func freeze() -> void:
+	is_frozen = true
+	velocity.x = 0
+	await get_tree().create_timer(4.0).timeout
+	is_frozen = false
 
 func _physics_process(delta: float) -> void:
 	# Add gravity
 	velocity += get_gravity() * gravity_direction * delta
 
 	# Handle jump
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_pressed("jump") and is_on_floor() and !is_frozen:
 		velocity.y = JUMP_VELOCITY * gravity_direction
 
 	# Input direction
@@ -50,7 +57,9 @@ func _physics_process(delta: float) -> void:
 		rotation_degrees = 180
 		
 	# Play animations
-	if is_on_floor():
+	if is_frozen:
+		animated_sprite.play("jump")
+	elif is_on_floor():
 		if direction == 0:
 			animated_sprite.play("idle")
 		else:
@@ -59,10 +68,11 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("jump")
 	
 	# Apply movement
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if is_frozen == false:
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
 				

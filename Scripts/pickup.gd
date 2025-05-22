@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_enum("Gravity", "Direction") var pickup_type : String
+@export_enum("Gravity", "Direction", "Freeze") var pickup_type : String
 
 func _on_body_entered(body: Node2D) -> void:
 	queue_free()
@@ -12,3 +12,6 @@ func _on_body_entered(body: Node2D) -> void:
 		"Direction":
 			if body.has_method("flip_direction"):
 				body.flip_direction()
+		"Freeze":
+			if body.has_method("freeze"):
+				body.freeze()

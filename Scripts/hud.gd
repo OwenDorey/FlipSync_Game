@@ -10,4 +10,4 @@ func _on_retry_button_button_down() -> void:
 	get_tree().current_scene.reload_level()
 
 func _on_menu_button_button_down() -> void:
-	pass # Replace with function body.
+	get_tree().current_scene.load_menu()

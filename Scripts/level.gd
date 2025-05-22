@@ -7,7 +7,9 @@ var levels = [
 	load("res://Scenes/Levels/level_2.tscn"),
 	load("res://Scenes/Levels/level_3.tscn"),
 	load("res://Scenes/Levels/level_4.tscn"),
-	load("res://Scenes/Levels/level_5.tscn")
+	load("res://Scenes/Levels/level_5.tscn"),
+	load("res://Scenes/Levels/level_6.tscn"),
+	load("res://Scenes/Levels/level_7.tscn")
 ]
 
 var one_door : bool
@@ -65,6 +67,13 @@ func load_next_level():
 		get_tree().change_scene_to_packed(levels[current_level + 1])
 	else:
 		get_tree().reload_current_scene()
+		
+# Open menu
+func load_menu():
+	scene_transition_animation.play("fade_in")
+	await get_tree().create_timer(0.5).timeout
+	set_physics_process(false)
+	get_tree().change_scene_to_file("res://Scenes/UI/menu.tscn")
 
 # On player death
 func character_died():	

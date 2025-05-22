@@ -67,16 +67,19 @@ pickup_type = "Gravity"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1xnrs")
 autoplay = "default"
+frame_progress = 0.417659
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6rmf2")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0.129412, 0.898039, 1)
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_iavqc")
 lifetime = 2.0
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+modulate = Color(1, 0.129412, 0.898039, 1)
 process_material = SubResource("ParticleProcessMaterial_wsiyu")
 lifetime = 2.0
 

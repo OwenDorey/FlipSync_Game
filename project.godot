@@ -19,6 +19,7 @@ config/icon="res://Assets/Characters/Red_Idle.png"
 
 window/size/viewport_width=1408
 window/size/viewport_height=768
+window/size/mode=4
 window/stretch/mode="viewport"
 
 [file_customization]

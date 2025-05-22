@@ -23,6 +23,7 @@ var red_door_time : float = 0
 var blue_door_time : float = 0
 
 @onready var scene_transition_animation: AnimationPlayer = $SceneTransitionAnimation/AnimationPlayer
+@onready var win_sound: AudioStreamPlayer2D = $WinSound
 
 func _ready() -> void:
 	scene_transition_animation.get_parent().get_node("ColorRect").color.a = 255
@@ -92,6 +93,7 @@ func character_died():
 # On level complete
 func finish_level():
 	if has_finished == false:
+		win_sound.play()
 		has_finished = true
 		if has_node("RedChar"):
 			get_node("RedChar").finish_game()

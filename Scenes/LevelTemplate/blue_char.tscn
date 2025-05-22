@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdib48umloxbd"]
+[gd_scene load_steps=17 format=3 uid="uid://cdib48umloxbd"]
 
 [ext_resource type="Script" path="res://Scripts/character_movement.gd" id="1_d8bhu"]
 [ext_resource type="Texture2D" uid="uid://y8x75htvvprq" path="res://Assets/Characters/Blue_Idle.png" id="2_ehyfy"]
 [ext_resource type="Texture2D" uid="uid://s8tscjbj48ua" path="res://Assets/Characters/Blue_Jump.png" id="3_3ilus"]
 [ext_resource type="Texture2D" uid="uid://cu1cloq6sqsyk" path="res://Assets/Characters/Blue_Walk.png" id="4_0ikl7"]
+[ext_resource type="AudioStream" uid="uid://bmhufn41qbwux" path="res://Assets/Sounds/PowerupSound.mp3" id="5_tgylw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sx2ft"]
 size = Vector2(22, 25)
@@ -107,3 +108,6 @@ animation = &"walk"
 autoplay = "idle"
 frame = 3
 frame_progress = 0.414277
+
+[node name="PowerupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_tgylw")

@@ -7,6 +7,7 @@ const JUMP_VELOCITY : float = -270.0
 @export_enum("Normal:1", "Inverse:-1") var walk_direction : int = 1
 var is_frozen : bool = false
 
+@onready var powerup_sound: AudioStreamPlayer2D = $PowerupSound
 @export var particle_colour : Color
 const DEATH_PARTICLES = preload("res://Scenes/Other/death_particles.tscn")
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -20,13 +21,16 @@ func _ready() -> void:
 		up_direction *= -1
 	
 func flip_gravity() -> void:
+	powerup_sound.play()
 	gravity_direction *= -1
 	up_direction *= -1
 	
 func flip_direction() -> void:
+	powerup_sound.play()
 	walk_direction *= -1
 	
 func freeze() -> void:
+	powerup_sound.play()
 	is_frozen = true
 	velocity.x = 0
 	await get_tree().create_timer(4.0).timeout

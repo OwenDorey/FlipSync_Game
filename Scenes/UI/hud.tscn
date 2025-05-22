@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxwad6kpad56d"]
+[gd_scene load_steps=8 format=3 uid="uid://cxwad6kpad56d"]
 
 [ext_resource type="PackedScene" uid="uid://jw6ldqdg73fp" path="res://Scenes/UI/scanlines.tscn" id="1_jnkie"]
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_xkmtu"]
 [ext_resource type="FontFile" uid="uid://bo0df6mxdlkhd" path="res://Assets/UI/pixelmix.ttf" id="2_kthvv"]
 [ext_resource type="Texture2D" uid="uid://bbg75ah762ip5" path="res://Assets/UI/RetryIcon.png" id="3_cmq0a"]
 [ext_resource type="Texture2D" uid="uid://bmmjjk43luwh7" path="res://Assets/UI/MenuIcon.png" id="4_d5efl"]
+[ext_resource type="AudioStream" uid="uid://bcplyr5o0y4o3" path="res://Assets/Sounds/ButtonSound.mp3" id="6_13w3x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k3pww"]
 font = ExtResource("2_kthvv")
@@ -40,6 +41,12 @@ icon = ExtResource("3_cmq0a")
 [node name="MenuButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("4_d5efl")
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_13w3x")
+volume_db = -10.919
+attenuation = 0.176777
+panning_strength = 3.0
 
 [connection signal="button_down" from="VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_button_down"]
 [connection signal="button_down" from="VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_button_down"]

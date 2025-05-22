@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://70372wa1moaa"]
+[gd_scene load_steps=14 format=4 uid="uid://70372wa1moaa"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_nrq52"]
 [ext_resource type="PackedScene" uid="uid://cxwad6kpad56d" path="res://Scenes/UI/hud.tscn" id="2_h0v1u"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bnfe0fvk8htw8" path="res://Scenes/Spikes/spike5.tscn" id="10_7keum"]
 [ext_resource type="PackedScene" uid="uid://d1h02ugxd3k7m" path="res://Scenes/Pickups/gravity_pickup.tscn" id="10_wh3o3"]
 [ext_resource type="PackedScene" uid="uid://cd2s2gwmgxdmd" path="res://Scenes/Pickups/freeze_pickup.tscn" id="11_cm7p3"]
+[ext_resource type="AudioStream" uid="uid://bu4xr74hi0xk4" path="res://Assets/Sounds/WinSound.mp3" id="13_cjqd2"]
 
 [node name="Level7" type="Node2D"]
 script = ExtResource("1_nrq52")
@@ -89,3 +90,7 @@ rotation = -3.14159
 [node name="Spike13" parent="." instance=ExtResource("10_7keum")]
 position = Vector2(22, 5)
 rotation = -3.14159
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_cjqd2")
+volume_db = -4.685

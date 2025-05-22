@@ -3,6 +3,7 @@ extends Control
 @onready var scene_transition_animation: AnimationPlayer = $SceneTransitionAnimation/AnimationPlayer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var level_buttons: GridContainer = $Levels/LevelButtons
+@onready var button_sound: AudioStreamPlayer2D = $ButtonSound
 
 func _ready() -> void:
 	for i in range(1, 9):
@@ -10,6 +11,7 @@ func _ready() -> void:
 		button.pressed.connect(_on_level_button_pressed.bind(i))
 		
 func _on_level_button_pressed(level_index):
+	button_sound.play()
 	var path = "res://Scenes/Levels/level_%d.tscn" % level_index
 	load_scene(path)
 
@@ -20,16 +22,20 @@ func load_scene(scene_name : String):
 	get_tree().change_scene_to_file(scene_name)
 	
 func _on_play_button_button_down() -> void:
+	button_sound.play()
 	load_scene("res://Scenes/Levels/level_1.tscn")
 
 func _on_quit_button_button_down() -> void:
+	button_sound.play()
 	scene_transition_animation.play("fade_in")
 	await get_tree().create_timer(0.5).timeout
 	set_physics_process(false)
 	get_tree().quit()
 
 func _on_level_select_button_button_down() -> void:
+	button_sound.play()
 	animation_player.play("open_level_select")
 
 func _on_back_button_button_down() -> void:
+	button_sound.play()
 	animation_player.play("open_menu")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://niimx5rj58tu"]
+[gd_scene load_steps=11 format=4 uid="uid://niimx5rj58tu"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_tlwwe"]
 [ext_resource type="PackedScene" uid="uid://vgkhcf2ckty0" path="res://Scenes/LevelTemplate/game_tiles.tscn" id="2_xhdqg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cwrfv7ugv60gv" path="res://Scenes/LevelTemplate/red_char.tscn" id="6_cy8wj"]
 [ext_resource type="PackedScene" uid="uid://cxwad6kpad56d" path="res://Scenes/UI/hud.tscn" id="8_rw7cd"]
 [ext_resource type="PackedScene" uid="uid://bnfe0fvk8htw8" path="res://Scenes/Spikes/spike5.tscn" id="9_y363s"]
+[ext_resource type="AudioStream" uid="uid://bu4xr74hi0xk4" path="res://Assets/Sounds/WinSound.mp3" id="10_s76bk"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_tlwwe")
@@ -38,3 +39,7 @@ level_number = 1
 
 [node name="Spike5" parent="." instance=ExtResource("9_y363s")]
 position = Vector2(-72, 85)
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_s76bk")
+volume_db = -4.685

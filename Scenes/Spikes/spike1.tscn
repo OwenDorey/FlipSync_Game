@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://w5xxmxusqu5q"]
+[gd_scene load_steps=5 format=3 uid="uid://w5xxmxusqu5q"]
 
 [ext_resource type="Script" path="res://Scripts/spike_zone.gd" id="1_adeor"]
 [ext_resource type="Texture2D" uid="uid://cur44klwt10eg" path="res://Assets/Spikes/Spike1.png" id="2_u8ecl"]
+[ext_resource type="AudioStream" uid="uid://r3s5qjeur035" path="res://Assets/Sounds/DeathSound.wav" id="3_dca4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sri6a"]
 size = Vector2(6, 3)
@@ -16,5 +17,11 @@ texture = ExtResource("2_u8ecl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_sri6a")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dca4s")
+volume_db = -5.621
+attenuation = 0.5
+panning_strength = 3.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -46,6 +46,12 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("skip_level"):
 		load_next_level()
 		
+	if Input.is_action_just_pressed("restart_level"):
+		reload_level()
+		
+	if Input.is_action_just_pressed("open_menu"):
+		load_menu()
+		
 	if one_door == true:
 		if red_door_time > MAX_DOOR_TIME or blue_door_time > MAX_DOOR_TIME:
 			finish_level()
